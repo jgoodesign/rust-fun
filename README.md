@@ -1,5 +1,5 @@
 # rust-fun
-Learning some Fun(ctions) / typing for Rust
+Learning some Function patterns / typing for Rust
 
 naively building some kind of data store that modifies data by passing events to reducer functions
 copying redux pattern
