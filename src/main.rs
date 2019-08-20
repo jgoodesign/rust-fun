@@ -11,7 +11,7 @@ struct Store<'a, T: 'a> {
     reducers: Vec<&'a Fn(Action, T) -> T>,
 }
 
-// T requires the Copy trait here in order fo rus to safely pass 'self.state' to the reducer function
+// T requires the Copy trait here in order for us to safely pass 'self.state' to the reducer function
 // also tried to accomplish this without Copy and using Box but couldn't get it to work properly
 // lifetime 'a is also required when impl the Store struct
 impl<'a, T> Store<'a, T>
@@ -31,7 +31,7 @@ where
 
     fn dispatch(&mut self, action: Action) {
         // could not get this to work with .iter().for_each
-        // problem was getting the for_each closure to capture &self
+        // problem was getting the for_each closure to capture &mut self
         for reducer in &self.reducers {
             //this is why we need the Copy traits
             self.state = reducer(action, self.state);
